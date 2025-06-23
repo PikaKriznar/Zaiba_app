@@ -24,7 +24,9 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
+import java.util.Map;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class CalendarAndGraphHelper {
     private final Context context;
@@ -40,7 +42,6 @@ public class CalendarAndGraphHelper {
         int firstDayOfWeek = getFirstDayOfMonth(month);
         int paddingDays = (firstDayOfWeek == Calendar.SUNDAY) ? 6 : firstDayOfWeek - Calendar.MONDAY;
 
-        // Add padding (empty) cells
         for (int i = 0; i < paddingDays; i++) {
             FrameLayout container = new FrameLayout(context);
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
@@ -64,7 +65,6 @@ public class CalendarAndGraphHelper {
             calendarGrid.addView(container);
         }
 
-        // Add day cells
         for (int day = 1; day <= numberOfDays; day++) {
             FrameLayout container = new FrameLayout(context);
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
@@ -107,7 +107,6 @@ public class CalendarAndGraphHelper {
             calendarGrid.addView(container);
         }
     }
-
     public void colorCalendarSquares(GridLayout calendarGrid, Button selectedSpeciesButton, int speciesAId, int speciesBId, int speciesCId, String month) {
         try {
             String jsonFile = getJsonFileForMonth(month);
@@ -145,7 +144,6 @@ public class CalendarAndGraphHelper {
                     if (dayText != null && background.getVisibility() != View.INVISIBLE) {
                         int day = Integer.parseInt(dayText.getText().toString());
 
-                        // Skip future days
                         if (isCurrentMonth && day > todayDay) {
                             background.setBackgroundColor(Color.WHITE);
                             cellIndex++;
@@ -195,7 +193,6 @@ public class CalendarAndGraphHelper {
             Log.e("CalendarAndGraphHelper", "Error reading or parsing JSON for " + month, e);
         }
     }
-
     public void populateBarGraphs(LinearLayout graphContainer, Button selectedSpeciesButton, int speciesAId, int speciesBId, int speciesCId, String month, SecondActivity.TimeFilter filter) {
         try {
             Log.d("CalendarAndGraphHelper", "populateBarGraphs called with filter: " + filter);
@@ -215,7 +212,6 @@ public class CalendarAndGraphHelper {
             int todayYear = today.get(Calendar.YEAR);
             boolean isCurrentMonth = month.equals("May 2025") && todayYear == 2025 && todayMonth == Calendar.MAY;
 
-            // Monthly filter: Show bars for each day of the month
             int numberOfDays = getDaysInMonth(month);
             int childCount = Math.min(graphContainer.getChildCount(), numberOfDays);
 
@@ -264,16 +260,14 @@ public class CalendarAndGraphHelper {
                         } else {
                             count = dayData.getInt("total");
                         }
-                        // Map count to height (species: 10-100)
                         float heightFraction = (count - 10f) / (100f - 10f);
                         heightFraction = Math.max(0f, Math.min(1f, heightFraction));
-                        height = (int) (heightFraction * 100) + 20; // 20-120 pixels
+                        height = (int) (heightFraction * 100) + 20;
                     } else {
                         count = dayData.getInt("total");
-                        // Map count to height (total: 30-300)
                         float heightFraction = (count - 30f) / (300f - 30f);
                         heightFraction = Math.max(0f, Math.min(1f, heightFraction));
-                        height = (int) (heightFraction * 100) + 20; // 20-120 pixels
+                        height = (int) (heightFraction * 100) + 20;
                     }
 
                     if (isCurrentMonth && day == todayDay) {
@@ -293,7 +287,6 @@ public class CalendarAndGraphHelper {
             Log.e("CalendarAndGraphHelper", "Error reading or parsing JSON for bar graphs", e);
         }
     }
-
     public void populateDailyAndWeeklyBarGraphs(
             LinearLayout graphContainer,
             Button selectedSpeciesButton,
@@ -464,7 +457,6 @@ public class CalendarAndGraphHelper {
             Log.e("CalendarAndGraphHelper", "Error reading or parsing JSON for bar graphs", e);
         }
     }
-
     public void highlightTodayLabel(LinearLayout graphContainer, String month, SecondActivity.TimeFilter filter) {
         Calendar today = Calendar.getInstance();
         int todayDay = today.get(Calendar.DAY_OF_MONTH);
@@ -476,7 +468,7 @@ public class CalendarAndGraphHelper {
         int daysCount;
         if (filter == SecondActivity.TimeFilter.TODAY) {
             daysToShow = new int[]{todayDay};
-            daysCount = 3; // For 3 species
+            daysCount = 3;
         } else if (filter == SecondActivity.TimeFilter.WEEKLY) {
             Calendar weekStart = (Calendar) today.clone();
             weekStart.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
@@ -487,7 +479,6 @@ public class CalendarAndGraphHelper {
                 weekStart.add(Calendar.DAY_OF_MONTH, 1);
             }
         } else {
-            // Monthly filter
             daysToShow = new int[getDaysInMonth(month)];
             for (int i = 0; i < daysToShow.length; i++) {
                 daysToShow[i] = i + 1;
@@ -523,6 +514,7 @@ public class CalendarAndGraphHelper {
         }
     }
 
+    // Helper methods
     private int getDaysInMonth(String month) {
         switch (month) {
             case "May 2025":
@@ -534,7 +526,6 @@ public class CalendarAndGraphHelper {
                 return 30;
         }
     }
-
     private int getFirstDayOfMonth(String month) {
         Calendar calendar = Calendar.getInstance();
         if (month.equals("May 2025")) {
@@ -546,7 +537,6 @@ public class CalendarAndGraphHelper {
         }
         return calendar.get(Calendar.DAY_OF_WEEK);
     }
-
     public String getJsonFileForMonth(String month) {
         switch (month) {
             case "May 2025":

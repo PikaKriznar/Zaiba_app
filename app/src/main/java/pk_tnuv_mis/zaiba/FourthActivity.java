@@ -23,10 +23,8 @@ public class FourthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fourth);
 
-        // Initialize AudioManager
         audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
-        // Set up Back Button
         ImageButton backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(v -> {
             Intent intent = new Intent(FourthActivity.this, MainActivity.class);
@@ -35,7 +33,6 @@ public class FourthActivity extends AppCompatActivity {
             finish();
         });
 
-        // Set up Volume SeekBar
         SeekBar volumeSeekBar = findViewById(R.id.volume_seek_bar);
         TextView volumeValue = findViewById(R.id.volumeValue);
         int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
@@ -58,11 +55,13 @@ public class FourthActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
-        // Set up Sound Switch
         SwitchCompat soundSwitch = findViewById(R.id.soundSwitch);
         soundSwitch.setChecked(isSoundOn);
+        setupSwitchColors(soundSwitch);
+    }
 
-        // Set initial colors for Switch
+    // Helper methods
+    private void setupSwitchColors(SwitchCompat soundSwitch) {
         int g1Color = ContextCompat.getColor(this, R.color.g1);
         int grayColor = ContextCompat.getColor(this, android.R.color.darker_gray);
         updateSwitchColors(soundSwitch, isSoundOn, g1Color, grayColor);
@@ -71,11 +70,9 @@ public class FourthActivity extends AppCompatActivity {
             isSoundOn = isChecked;
             soundSwitch.setText(isChecked ? "Sound On" : "Sound Off");
             audioManager.setStreamMute(AudioManager.STREAM_MUSIC, !isChecked);
-            // Update Switch colors based on state
             updateSwitchColors(soundSwitch, isChecked, g1Color, grayColor);
         });
     }
-
     private void updateSwitchColors(SwitchCompat soundSwitch, boolean isChecked, int onColor, int offColor) {
         if (isChecked) {
             soundSwitch.setThumbTintList(ColorStateList.valueOf(onColor));

@@ -86,13 +86,25 @@
                 android:layout_marginTop="8dp"
                 android:textSize="16sp" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/playButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Predvajaj zvok"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp" />
+                android:layout_gravity="center_horizontal"
+                android:src="@android:drawable/ic_media_play"
+                android:contentDescription="@string/play"
+                android:background="@android:color/transparent" />
+
+            <ImageButton
+                android:id="@+id/stopButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@android:drawable/ic_media_pause"
+                android:contentDescription="@string/stop"
+                android:background="@android:color/transparent"
+                android:visibility="gone" />
+
 
         </LinearLayout>
     </ScrollView>

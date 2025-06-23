@@ -6,7 +6,6 @@
     android:layout_marginBottom="8dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Bar Graph Container for Weekly/Monthly -->
     <LinearLayout
         android:id="@+id/barGraphContainer"
         android:layout_width="match_parent"
@@ -163,7 +162,4 @@
                 android:layout_marginTop="4dp" />
         </LinearLayout>
     </LinearLayout>
-
-
-
 </RelativeLayout>

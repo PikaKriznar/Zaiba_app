@@ -23,6 +23,12 @@ public class DataManager {
         imageResourceMap.put("zaba4", R.drawable.zaba4);
         imageResourceMap.put("akcija_img", R.drawable.akcija_img);
         imageResourceMap.put("akcija_article", R.drawable.akcija_article);
+        imageResourceMap.put("raznolikost_article", R.drawable.raznolikost_article);
+        imageResourceMap.put("cloveska_ribica", R.drawable.cloveska_ribica);
+        imageResourceMap.put("selitve_article", R.drawable.selitve_article);
+        imageResourceMap.put("zelena_zaba", R.drawable.zelena_zaba);
+        imageResourceMap.put("mlake_pomen", R.drawable.mlake_pomen);
+        imageResourceMap.put("prepoznavanje_dvozivk", R.drawable.prepoznavanje_dvozivk);
     }
 
     public static void initialize(Context context) {
@@ -30,6 +36,7 @@ public class DataManager {
         loadFrogs(context);
     }
 
+    // Loaders
     private static void loadArticles(Context context) {
         try {
             InputStream is = context.getAssets().open("articles.json");
@@ -43,7 +50,6 @@ public class DataManager {
             e.printStackTrace();
         }
     }
-
     private static void loadFrogs(Context context) {
         try {
             InputStream is = context.getAssets().open("frogs.json");
@@ -58,28 +64,11 @@ public class DataManager {
         }
     }
 
-    public static List<Article> getArticles() {
-        return new ArrayList<>(articles);
-    }
 
+    // Helper methods
     public static List<Frog> getFrogs() {
         return new ArrayList<>(frogs);
     }
-
-    public static List<Integer> getImageResources(List<String> imageNames) {
-        List<Integer> resources = new ArrayList<>();
-        for (String name : imageNames) {
-            Integer resId = imageResourceMap.get(name);
-            if (resId != null) {
-                resources.add(resId);
-            } else {
-                System.out.println("Image not found for name: " + name); // Debug log
-            }
-        }
-        return resources;
-    }
-
-    // Add method to get single image resource for Frog
     public static Integer getImageResource(String imageName) {
         Integer resId = imageResourceMap.get(imageName);
         if (resId == null) {

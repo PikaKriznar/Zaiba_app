@@ -81,4 +81,7 @@
     <string name="sound_on">Sound On</string>
     <string name="pin">Pin</string>
     <string name="nothing_saved">Nothing is saved yet. Click the Save icon on the frog card to save your favourite frog.</string>
+    <string name="listen_to_this_frog">Listen to this frog!</string>
+    <string name="play">Play</string>
+    <string name="stop">Stop</string>
 </resources>

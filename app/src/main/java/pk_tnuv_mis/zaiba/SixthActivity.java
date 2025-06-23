@@ -1,8 +1,9 @@
 package pk_tnuv_mis.zaiba;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,11 +17,25 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
+import android.media.MediaPlayer;
+import java.util.Random;
+
 public class SixthActivity extends AppCompatActivity {
 
     private TextView frogTitle, scientificName, frogDescription, frogHabitat, topTitle;
     private ImageView frogImage;
-    private Button playButton;
+    MediaPlayer mediaPlayer;
+
+    ImageButton playButton, stopButton;
+    int[] soundFiles = { R.raw.bombina_variegata,
+            R.raw.bufo_bufo,
+            R.raw.bufo_viridis,
+            R.raw.hyla_arboea,
+            R.raw.rana_lastastai,
+            R.raw.rana_ridibunda,
+            R.raw.rana_temporaria, };
+
+
 
     public static final String EXTRA_FROG_NAME = "frog_name";
 
@@ -29,8 +44,14 @@ public class SixthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sixth);
 
+        setupBottomMenu();
+
         ImageButton backButton = findViewById(R.id.back_button);
-        backButton.setOnClickListener(v -> finish());
+        backButton.setOnClickListener(v -> {
+            stopAudio();
+            finish();
+        });
+
 
         topTitle =findViewById(R.id.location_smallTitle);
         frogTitle = findViewById(R.id.frogTitle);
@@ -39,8 +60,8 @@ public class SixthActivity extends AppCompatActivity {
         frogDescription = findViewById(R.id.frogDescription);
         frogHabitat = findViewById(R.id.frogHabitat);
         playButton = findViewById(R.id.playButton);
+        stopButton = findViewById(R.id.stopButton);
 
-        // Get frog name from Intent
         String frogName = getIntent().getStringExtra(EXTRA_FROG_NAME);
         if (frogName == null) {
             Toast.makeText(this, "Error: Frog name not provided", Toast.LENGTH_LONG).show();
@@ -48,12 +69,69 @@ public class SixthActivity extends AppCompatActivity {
             return;
         }
 
-        // Load and parse JSON
+        setupArticle(frogName);
+        playAudio();
+    }
+
+
+
+
+    // Helper methods
+    private String loadJSONFromAsset(String fileName) {
+        try {
+            InputStream is = getAssets().open(fileName);
+            byte[] buffer = new byte[is.available()];
+            is.read(buffer);
+            is.close();
+            return new String(buffer, StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            Log.e("SixthActivity", "Error reading JSON file", e);
+            return null;
+        }
+    }
+    private void stopAudio() {
+        if (mediaPlayer != null) {
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.stop();
+            }
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+        playButton.setVisibility(View.VISIBLE);
+        stopButton.setVisibility(View.GONE);
+    }
+
+    // Setup
+    private void setupBottomMenu() {
+        ImageButton homeButton = findViewById(R.id.menu_bar_button_home);
+        ImageButton infoButton = findViewById(R.id.menu_bar_button_info);
+        ImageButton settingsButton = findViewById(R.id.menu_bar_button_settings);
+
+        homeButton.setOnClickListener(v -> {
+            stopAudio();
+            Intent homeIntent = new Intent(SixthActivity.this, MainActivity.class);
+            startActivity(homeIntent);
+            stopAudio();
+        });
+
+        infoButton.setOnClickListener(v -> {
+            stopAudio();
+            Intent infoIntent = new Intent(SixthActivity.this, ThirdActivity.class);
+            startActivity(infoIntent);
+        });
+
+        settingsButton.setOnClickListener(v -> {
+            stopAudio();
+            Intent settingsIntent = new Intent(SixthActivity.this, FourthActivity.class);
+            startActivity(settingsIntent);
+
+        });
+    }
+    private void setupArticle(String frogName) {
         try {
             String jsonString = loadJSONFromAsset("frogs.json");
             JSONArray frogsArray = new JSONArray(jsonString);
 
-            // Find the frog by name
             JSONObject selectedFrog = null;
             for (int i = 0; i < frogsArray.length(); i++) {
                 JSONObject frog = frogsArray.getJSONObject(i);
@@ -70,7 +148,6 @@ public class SixthActivity extends AppCompatActivity {
                 frogDescription.setText(selectedFrog.getString("basicDescription"));
                 frogHabitat.setText(selectedFrog.getString("habitat"));
 
-                // Set image
                 String imageName = selectedFrog.getString("image");
                 int imageResId = getResources().getIdentifier(imageName, "drawable", getPackageName());
                 if (imageResId != 0) {
@@ -79,12 +156,6 @@ public class SixthActivity extends AppCompatActivity {
                     Log.w("SixthActivity", "Image resource not found: " + imageName);
                 }
 
-                // Set play button listener (placeholder)
-                String soundFile = selectedFrog.getString("soundFile");
-                playButton.setOnClickListener(v -> {
-                    Toast.makeText(this, "Play sound: " + soundFile, Toast.LENGTH_SHORT).show();
-                    // Add audio playback logic here
-                });
             } else {
                 Log.e("SixthActivity", frogName + " not found in JSON");
                 Toast.makeText(this, "Error: Frog data not found", Toast.LENGTH_LONG).show();
@@ -97,17 +168,25 @@ public class SixthActivity extends AppCompatActivity {
             finish();
         }
     }
+    private void playAudio() {
+        playButton.setOnClickListener(v -> {
+            stopAudio();
 
-    private String loadJSONFromAsset(String fileName) {
-        try {
-            InputStream is = getAssets().open(fileName);
-            byte[] buffer = new byte[is.available()];
-            is.read(buffer);
-            is.close();
-            return new String(buffer, StandardCharsets.UTF_8);
-        } catch (Exception e) {
-            Log.e("SixthActivity", "Error reading JSON file", e);
-            return null;
-        }
+            int randomIndex = new Random().nextInt(soundFiles.length);
+            int selectedSound = soundFiles[randomIndex];
+
+            mediaPlayer = MediaPlayer.create(this, selectedSound);
+            if (mediaPlayer != null) {
+                mediaPlayer.start();
+                playButton.setVisibility(View.GONE);
+                stopButton.setVisibility(View.VISIBLE);
+
+                mediaPlayer.setOnCompletionListener(mp -> stopAudio());
+            } else {
+                Toast.makeText(this, "Playback error", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        stopButton.setOnClickListener(v -> stopAudio());
     }
 }

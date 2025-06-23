@@ -20,5 +20,65 @@
     },
     "images": ["akcija_article"],
     "link": "https://pomagajmo-zabicam.si"
-  }
+  },
+    {
+      "title": "Raznolikost dvoživk v Sloveniji",
+      "text": "Slovenija je dom številnim vrstam dvoživk, ki jih lahko srečamo v različnih habitatih.",
+      "actualText": {
+        "boldProlog": "V Sloveniji najdemo kar 21 vrst dvoživk, kar je za tako majhno državo zelo veliko. Med njimi so številne zaščitene vrste, saj jim zaradi posegov v naravo grozi izumrtje.",
+        "article": "Dvoživke v Sloveniji vključujejo vrste, kot so navadna krastača, zelena žaba, veliki pupki in človeška ribica. Vsaka vrsta ima svoj življenjski prostor, ki ga moramo varovati. Območja z vlažnimi travniki, gozdovi in mlakami so ključnega pomena za njihovo preživetje. \n\nZaradi majhnosti države in njene izjemne biotske raznovrstnosti Slovenija velja za pomembno zatočišče mnogih vrst. Prisotnost številnih dvoživk kaže na dobro ohranjeno naravo. Vendar pa človek s posegi v prostor in onesnaževanjem močno vpliva na zmanjševanje njihovega števila, zato je ključnega pomena, da jih zaščitimo z ohranjanjem naravnih habitatov, osveščanjem in izobraževanjem javnosti."
+      },
+      "images": ["raznolikost_article"],
+      "link": "https://pomagajmo-zabicam.si"
+    },
+    {
+      "title": "Človeška ribica – skrivnostna prebivalka podzemlja",
+      "text": "Edinstvena vrsta dvoživke, ki jo najdemo samo na območju Dinarskega krasa.",
+      "actualText": {
+        "boldProlog": "Človeška ribica (Proteus anguinus) je ena najbolj skrivnostnih in ogroženih živalskih vrst v Sloveniji.",
+        "article": "Človeška ribica (Proteus anguinus) je edina evropska jamska dvoživka in edina predstavnica svojega rodu, ki jo najdemo izključno v podzemnih vodah Dinarskega krasa – torej tudi v Sloveniji. Zaradi svojega posebnega življenjskega okolja je razvila vrsto izjemnih prilagoditev.\n\nNjeno telo je podolgovato, brez pigmenta in skoraj povsem prosojno, zato se pogosto zdi rožnata, ker se skozi kožo vidi kri. Oči so zakrnele in skoraj nefunkcionalne, saj v popolni temi nimajo uporabne funkcije. Namesto vida se človeška ribica zanaša na izredno razvite druge čute – predvsem tip, zaznavanje vibracij in kemičnih signalov v vodi.\n\nZanimivo je, da človeška ribica diha tako s pljuči kot s škrgami, ki jih ohrani skozi celo življenje. To je značilnost, ki je med dvoživkami zelo redka. Njena presnova je izjemno počasna – zabeleženi so bili primeri, kjer ni zaužila hrane tudi več let zapored."
+      },
+      "images": ["cloveska_ribica"],
+      "link": "https://pomagajmo-zabicam.si"
+    },
+    {
+      "title": "Selitve dvoživk in nevarnosti cest",
+      "text": "Vsako pomlad številne dvoživke množično prečkajo ceste in tvegajo življenje.",
+      "actualText": {
+        "boldProlog": "Spomladi, ko se temperature dvignejo, dvoživke množično zapuščajo gozdove in se odpravljajo proti vodnim mrestiščem.",
+        "article": "Med selitvijo dvoživke pogosto prečkajo prometne ceste, kjer jih lahko povozi na tisoče. Najbolj množično se selijo v toplejših spomladanskih večerih, ko se začnejo premikati proti mrestiščem. Selitve trajajo več tednov, največ pa jih opazimo v prvih toplih nočeh po deževju.\n\nZato številni prostovoljci organizirajo akcije, v katerih prestavljajo dvoživke iz cestišča v vedra in jih varno prenesejo čez cesto. Te akcije ne le rešujejo življenja, ampak tudi povezujejo skupnosti in ozaveščajo o pomenu varstva narave. Mnogi organizatorji vodijo tudi evidence in spremljajo dinamiko populacij skozi čas."
+      },
+      "images": ["selitve_article"],
+      "link": "https://pomagajmo-zabicam.si"
+    },
+    {
+      "title": "Zelena žaba in njen življenjski krog",
+      "text": "Zelena žaba je pogosta prebivalka slovenskih mlak in ribnikov.",
+      "actualText": {
+        "boldProlog": "Zelena žaba (Pelophylax kl. esculentus) je ena najvidnejših vrst v Sloveniji in pomembna za ekosistem stoječih voda.",
+        "article": "Zelena žaba (Pelophylax kl. esculentus) je zelo prilagodljiva in jo pogosto opazimo na bregovih stoječih voda, kjer se sonči ali lovi plen. Njena zelena barva in dolgi skoki so značilnosti, po katerih jo lahko ločimo od drugih žab.\n\nJe pomemben člen v prehranski verigi, ker se hrani z insekti, ličinkami in celo manjšimi nevretenčarji. V času parjenja samci oglašajo z glasnim regljanjem, kar ustvari pravo zvočno kuliso v naravi. Na jajčeca, iz katerih se izležejo paglavci, vplivajo temperatura vode, kakovost in prisotnost plenilcev. Varovanje njenih habitatov je ključnega pomena za ohranitev ravnovesja v sladkovodnih ekosistemih."
+      },
+      "images": ["zelena_zaba"],
+      "link": "https://pomagajmo-zabicam.si"
+    },
+    {
+      "title": "Pomen mlak za dvoživke",
+      "text": "Mlake so ključnega pomena za razmnoževanje številnih vrst dvoživk.",
+      "actualText": {
+        "boldProlog": "Majhne, sezonske mlake so eden najpomembnejših naravnih habitatov za dvoživke.",
+        "article": "Mlake, pogosto prezrte, so eden ključnih habitatov za razmnoževanje dvoživk. Še posebej pomembne so kalne mlake brez rib, saj te plenijo na jajčecih in paglavcih.\n\nMnoge tradicionalne mlake so bile nekoč del kmetijstva, danes pa jih pogosto zasujejo ali pozabijo. Obnova kalov je zato ena najpomembnejših naravovarstvenih nalog. V Sloveniji že potekajo številni projekti obnove, kjer z bagri očistijo stare mlake ali izkopljejo nove. Te so pomembne tudi za druge vrste, kot so kačji pastirji, vodni hrošči in ptice."
+      },
+      "images": ["mlake_pomen"],
+      "link": "https://pomagajmo-zabicam.si"
+    },
+    {
+      "title": "Kako prepoznati dvoživke v naravi",
+      "text": "Opazovanje dvoživk v naravi je lahko zanimiva in poučna izkušnja.",
+      "actualText": {
+        "boldProlog": "Dvoživke so pogosto najbolj aktivne ponoči in v vlažnem vremenu, ko jih lahko najlažje opazimo.",
+        "article": "Prepoznavanje dvoživk v naravi zahteva nekaj znanja in opazovanja. Krastače imajo značilno suho, bradavičasto kožo, premikajo se počasi in so največkrat rjave barve. Žabe imajo bolj gladko kožo in so pogosto zelene ali rjave barve, odvisno od okolja.\n\nPupki so pogosto zamenjani s kuščarji, a imajo mehkejšo kožo in živijo v bolj vlažnih okoljih. Opazovanje dvoživk je najlažje ponoči, po dežju, ko pridejo iz skrivališč. Vedno jih opazujmo z razdalje, brez poseganja v njihov habitat, saj so občutljive na stres in temperaturne spremembe."
+      },
+      "images": ["prepoznavanje_dvozivk"],
+      "link": "https://pomagajmo-zabicam.si"
+    }
 ]

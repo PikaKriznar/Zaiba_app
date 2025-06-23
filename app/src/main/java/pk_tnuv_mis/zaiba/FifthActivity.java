@@ -22,7 +22,7 @@ import java.util.List;
 public class FifthActivity extends AppCompatActivity {
 
     private TextView titleTextView, prologTextView, articleTextView, linkTextView;
-    private TextView smallTitleTextView; // Reference to the small title in upper_title
+    private TextView smallTitleTextView;
     private ImageView articleImageView;
     private List<Article> articles;
 
@@ -31,22 +31,20 @@ public class FifthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fifth);
 
-        // Initialize views
         titleTextView = findViewById(R.id.article_title);
         prologTextView = findViewById(R.id.article_prolog);
         articleTextView = findViewById(R.id.article_text);
         linkTextView = findViewById(R.id.article_link);
         articleImageView = findViewById(R.id.article_image);
-        smallTitleTextView = findViewById(R.id.location_smallTitle); // Assuming this ID from upper_title
+        smallTitleTextView = findViewById(R.id.location_smallTitle);
 
-        // Load articles from JSON
+
         articles = loadArticlesFromJson();
         if (articles == null) {
             titleTextView.setText("Error loading articles");
             return;
         }
 
-        // Get the article index from Intent
         Intent intent = getIntent();
         int articleIndex = intent.getIntExtra("article_index", 0);
         if (articleIndex >= 0 && articleIndex < articles.size()) {
@@ -55,30 +53,12 @@ public class FifthActivity extends AppCompatActivity {
             titleTextView.setText("Article not found");
         }
 
-        ImageButton homeButton = findViewById(R.id.menu_bar_button_home);
-        ImageButton infoButton = findViewById(R.id.menu_bar_button_info);
-        ImageButton settingsButton = findViewById(R.id.menu_bar_button_settings);
+        setupBottomMenu();
+        setupBackButton();
 
-        homeButton.setOnClickListener(v -> {
-            Intent intent1 = new Intent(FifthActivity.this, MainActivity.class);
-            startActivity(intent1);
-        });
-
-        infoButton.setOnClickListener(v -> {
-            Intent intent2 = new Intent(FifthActivity.this, ThirdActivity.class);
-            startActivity(intent2);
-        });
-
-        settingsButton.setOnClickListener(v -> {
-            Intent intent3 = new Intent(FifthActivity.this, FourthActivity.class);
-            startActivity(intent3);
-        });
-
-        // Set up Back Button
-        ImageButton backButton = findViewById(R.id.back_button);
-        backButton.setOnClickListener(v -> finish()); // Close the activity
     }
 
+    // Helper methods
     private List<Article> loadArticlesFromJson() {
         List<Article> articleList = new ArrayList<>();
         try {
@@ -105,7 +85,7 @@ public class FifthActivity extends AppCompatActivity {
                     if (resId != 0) {
                         imageResources.add(resId);
                     } else {
-                        imageResources.add(R.drawable.info); // Fallback if image not found
+                        imageResources.add(R.drawable.info);
                     }
                 }
                 String link = jsonObject.getString("link");
@@ -118,7 +98,6 @@ public class FifthActivity extends AppCompatActivity {
         }
         return articleList;
     }
-
     @SuppressLint("SetTextI18n")
     private void displayArticle(Article article) {
         titleTextView.setText(article.getTitle());
@@ -128,14 +107,39 @@ public class FifthActivity extends AppCompatActivity {
         if (article.getImageResources() != null && !article.getImageResources().isEmpty()) {
             articleImageView.setImageResource(article.getImageResources().get(0));
         } else {
-            articleImageView.setImageResource(R.drawable.info); // Fallback image
+            articleImageView.setImageResource(R.drawable.info);
         }
         if (smallTitleTextView != null) {
-            smallTitleTextView.setText(article.getTitle()); // Set the small title to the article title
+            smallTitleTextView.setText(article.getTitle());
         }
     }
 
-    // Simple Article class to hold data
+    // Setup
+    private void setupBackButton() {
+        ImageButton backButton = findViewById(R.id.back_button);
+        backButton.setOnClickListener(v -> finish());
+    }
+    private void setupBottomMenu() {
+        ImageButton homeButton = findViewById(R.id.menu_bar_button_home);
+        ImageButton infoButton = findViewById(R.id.menu_bar_button_info);
+        ImageButton settingsButton = findViewById(R.id.menu_bar_button_settings);
+
+        homeButton.setOnClickListener(v -> {
+            Intent intent1 = new Intent(FifthActivity.this, MainActivity.class);
+            startActivity(intent1);
+        });
+
+        infoButton.setOnClickListener(v -> {
+            Intent intent2 = new Intent(FifthActivity.this, ThirdActivity.class);
+            startActivity(intent2);
+        });
+
+        settingsButton.setOnClickListener(v -> {
+            Intent intent3 = new Intent(FifthActivity.this, FourthActivity.class);
+            startActivity(intent3);
+        });
+    }
+
     static class Article {
         private final String title;
         private final String text;

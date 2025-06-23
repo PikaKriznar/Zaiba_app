@@ -46,11 +46,10 @@ public class PieChartView extends View {
             this.total += value;
         }
 
-        // Define colors for each slice
         colors = new int[]{
                 ContextCompat.getColor(getContext(), R.color.light_green),
                 ContextCompat.getColor(getContext(), R.color.dark_green_bar),
-                Color.parseColor("#90EE90") // Lighter green for third species
+                Color.parseColor("#90EE90")
         };
 
         invalidate();

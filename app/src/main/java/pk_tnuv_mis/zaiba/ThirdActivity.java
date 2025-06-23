@@ -66,6 +66,7 @@ public class ThirdActivity extends AppCompatActivity {
         setupBottomMenu();
     }
 
+    // Setup
     private void setupBottomMenu() {
         ImageButton homeButton = findViewById(R.id.menu_bar_button_home);
         ImageButton infoButton = findViewById(R.id.menu_bar_button_info);
@@ -87,6 +88,7 @@ public class ThirdActivity extends AppCompatActivity {
         });
     }
 
+    // Loaders
     private List<Article> loadArticlesFromJson() {
         List<Article> articleList = new ArrayList<>();
         try {
@@ -107,7 +109,6 @@ public class ThirdActivity extends AppCompatActivity {
                 String article = actualText.getString("article");
                 JSONArray images = jsonObject.getJSONArray("images");
                 List<Integer> imageResources = new ArrayList<>();
-                // Map image names to resource IDs (you'll need to update this mapping)
                 for (int j = 0; j < images.length(); j++) {
                     String imageName = images.getString(j);
                     int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
@@ -125,6 +126,7 @@ public class ThirdActivity extends AppCompatActivity {
         return articleList;
     }
 
+    // Converters
     private List<CardItem> convertFrogsToCardItems(List<Frog> frogs) {
         List<CardItem> result = new ArrayList<>();
         for (Frog frog : frogs) {
@@ -134,13 +136,13 @@ public class ThirdActivity extends AppCompatActivity {
                     frog.getDescription(),
                     imageResId != null ? imageResId : R.drawable.info,
                     frog.getEstReadingTime(),
-                    frog.getName() // Use name as identifier for consistency with frogs.json
+                    frog.getName()
             ));
         }
         return result;
     }
 
-    // Article class to match the JSON structure
+    // Classes
     static class Article {
         private final String title;
         private final String text;
@@ -165,8 +167,6 @@ public class ThirdActivity extends AppCompatActivity {
         public List<Integer> getImageResources() { return imageResources; }
         public String getLink() { return link; }
     }
-
-    // Article Adapter
     static class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder> {
         private final List<Article> articleList;
 
@@ -215,8 +215,6 @@ public class ThirdActivity extends AppCompatActivity {
             }
         }
     }
-
-    // CardItem class
     static class CardItem {
         String title;
         String description;
@@ -232,23 +230,6 @@ public class ThirdActivity extends AppCompatActivity {
             this.identifier = identifier;
         }
     }
-
-    private void updateNothingSavedTextVisibility() {
-        // If no items are saved, show the "nothing saved" message
-        if (savedCardList.isEmpty()) {
-            nothingSavedTextView.setVisibility(View.VISIBLE);
-        } else {
-            nothingSavedTextView.setVisibility(View.GONE);
-        }
-    }
-
-    // Inside the CardAdapter's onBindViewHolder method or after a save/un-save action
-    private void updateNothingSavedTextVisibilityAfterChange() {
-        updateNothingSavedTextVisibility();
-        savedAdapter.notifyDataSetChanged();
-    }
-
-    // CardAdapter
     class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
         private final List<CardItem> cardList;
 
@@ -330,5 +311,18 @@ public class ThirdActivity extends AppCompatActivity {
                 saveButton = itemView.findViewById(R.id.saveButton);
             }
         }
+    }
+
+    // Updaters
+    private void updateNothingSavedTextVisibility() {
+        if (savedCardList.isEmpty()) {
+            nothingSavedTextView.setVisibility(View.VISIBLE);
+        } else {
+            nothingSavedTextView.setVisibility(View.GONE);
+        }
+    }
+    private void updateNothingSavedTextVisibilityAfterChange() {
+        updateNothingSavedTextVisibility();
+        savedAdapter.notifyDataSetChanged();
     }
 }

@@ -155,12 +155,10 @@
             android:background="@color/white"
             android:layout_marginTop="4dp" />
     </LinearLayout>
-    <!-- Pie Chart Container for Today -->
     <FrameLayout
         android:id="@+id/pieChartContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone">
-        <!-- Custom Pie Chart View will be added programmatically -->
     </FrameLayout>
 </LinearLayout>

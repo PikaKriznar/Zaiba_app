@@ -4,411 +4,283 @@
     android:id="@+id/activity_second_root_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="60dp">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:gravity="center_horizontal">
-
-        <!-- Titles -->
-        <include layout="@layout/upper_title" />
-
-        <TextView
-            android:id="@+id/location_bigTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Big title"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Text with variable number -->
-        <TextView
-            android:id="@+id/variableText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/location_frog_calls_detected"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:layout_marginBottom="16dp" />
-
-        <!-- 4 Active Buttons -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/location_nav_krastaca_btn"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                style="@style/GreenRoundedButton"
-                android:text="@string/navadna_krastaca" />
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/location_zel_rega_btn"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                style="@style/GreenRoundedButton"
-                android:text="@string/zelena_rega" />
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/location_sekulja_btn"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                style="@style/GreenRoundedButton"
-                android:text="@string/sekulja" />
-        </LinearLayout>
-
-        <!-- 4 Selectable Buttons -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="16dp">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/location_today_btn"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                style="@style/GreenRoundedButton"
-                android:text="@string/today" />
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/location_weekly_btn"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                style="@style/GreenRoundedButton"
-                android:text="@string/weekly" />
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/location_monthly_btn"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                style="@style/GreenRoundedButton"
-                android:text="@string/monthly" />
-        </LinearLayout>
-
-        <!-- Bar Graph -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <include
-                android:id="@+id/graphContainer"
-                layout="@layout/bar_graph" />
-
-            <include
-                android:id="@+id/calendarView"
-                layout="@layout/calendar_view"
-                android:visibility="gone" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:weightSum="2"
-            android:layout_marginBottom="16dp">
-
-            <!-- Card 1 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                card_view:cardCornerRadius="12dp"
-                card_view:cardElevation="4dp"
-                android:layout_margin="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:text="@string/confidence_score"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:text="@string/most_active_hour"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Card 2 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                card_view:cardCornerRadius="12dp"
-                card_view:cardElevation="4dp"
-                android:layout_margin="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:text="@string/location_most_frog_of_species"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"/>
-                    <TextView
-                        android:text="@string/zelena_krastaca"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-
-        <!-- Smaller Bold Title -->
-        <TextView
-            android:id="@+id/location_interesting_stats"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/archivo_extrabold"
-            android:text="@string/location_interesting_stats"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:layout_gravity="left"
-            />
-
-
-        <!-- Two cards in a row -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:weightSum="2"
-            android:layout_marginBottom="16dp">
-
-            <!-- Card 1 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                card_view:cardCornerRadius="12dp"
-                card_view:cardElevation="4dp"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/g5">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:text="@string/location_most_active_hour"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@android:color/white"/>
-                    <TextView
-                        android:text="@string/most_active_hour"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@android:color/white"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Card 2 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:id="@+id/loudest_frog_card"
-                card_view:cardCornerRadius="12dp"
-                card_view:cardElevation="4dp"
-                android:layout_margin="4dp"
-                android:backgroundTint="@color/g4"
-                android:clickable="true"
-                android:focusable="true">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-
-                        <TextView
-                            android:text="@string/location_loudest_frog"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@android:color/white" />
-
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_marginStart="8dp"
-                            android:src="@drawable/baseline_play_arrow_24"
-                            android:contentDescription="@string/play_icon_desc" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/loudest_frog_name"
-                        android:text="@string/zelena_rega"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@android:color/white"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <include
-                layout="@layout/sound_overlay"
-                android:id="@+id/sound_overlay"
-                android:visibility="gone" />
-        </LinearLayout>
-
-
-        <!-- Donut chart section -->
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="24dp">
+            android:padding="16dp"
+            android:gravity="center_horizontal">
 
-            <pk_tnuv_mis.zaiba.DonutView
-                android:id="@+id/donutView"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                android:background="#FFF" />
+            <!-- Titles -->
+            <include layout="@layout/upper_title" />
 
+            <TextView
+                android:id="@+id/location_bigTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Big title"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:layout_marginBottom="16dp" />
 
-            <!-- Table under donut -->
+            <TextView
+                android:id="@+id/variableText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location_frog_calls_detected"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:layout_marginBottom="16dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/location_nav_krastaca_btn"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    style="@style/GreenRoundedButton"
+                    android:text="@string/navadna_krastaca" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/location_zel_rega_btn"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    style="@style/GreenRoundedButton"
+                    android:text="@string/zelena_rega" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/location_sekulja_btn"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    style="@style/GreenRoundedButton"
+                    android:text="@string/sekulja" />
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="16dp">
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
 
-                <!-- Row 1 -->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/location_today_btn"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="8dp">
-
-                    <View
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:backgroundTint="#89E6C4"
-                        android:background="@drawable/circle_dot"
-                        android:layout_marginEnd="8dp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/navadna_krastaca"/>
-
-                    <TextView android:text="@string/dvojka"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:layout_marginEnd="16dp"/>
-
-                    <TextView android:text="@string/procenti_3"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"/>
-                </LinearLayout>
-
-                <!-- Row 2 -->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
+                    style="@style/GreenRoundedButton"
+                    android:text="@string/today" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/location_weekly_btn"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="8dp">
-
-                    <View
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:backgroundTint="#74D47A"
-                        android:background="@drawable/circle_dot"
-                        android:layout_marginEnd="8dp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/zelena_rega" />
-
-                    <TextView android:text="@string/dvojka"
-                        android:layout_marginEnd="16dp"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"/>
-                    <TextView android:text="@string/procenti_3"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"/>
-                </LinearLayout>
-
-                <!-- Row 3 -->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
+                    style="@style/GreenRoundedButton"
+                    android:text="@string/weekly" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/location_monthly_btn"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="8dp">
+                    android:layout_width="wrap_content"
+                    style="@style/GreenRoundedButton"
+                    android:text="@string/monthly" />
+            </LinearLayout>
 
-                    <View
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:backgroundTint="#B4F0B0"
-                        android:background="@drawable/circle_dot"
-                        android:layout_marginEnd="8dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="@string/sekulja" />
+                <include
+                    android:id="@+id/graphContainer"
+                    layout="@layout/bar_graph" />
 
-                    <TextView
-                        android:text="@string/dvojka"
-                        android:layout_marginEnd="16dp"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"/>
-                    <TextView
-                        android:text="@string/procenti_3"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"/>
-                </LinearLayout>
+                <include
+                    android:id="@+id/calendarView"
+                    layout="@layout/calendar_view"
+                    android:visibility="gone" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="2"
+                android:layout_marginBottom="16dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="12dp"
+                    card_view:cardElevation="4dp"
+                    android:layout_margin="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:text="@string/confidence_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="@string/most_active_hour"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="12dp"
+                    card_view:cardElevation="4dp"
+                    android:layout_margin="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:text="@string/location_most_frog_of_species"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"/>
+                        <TextView
+                            android:text="@string/zelena_krastaca"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/location_interesting_stats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/archivo_extrabold"
+                android:text="@string/location_interesting_stats"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:layout_gravity="left" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="2"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="16dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="12dp"
+                    card_view:cardElevation="4dp"
+                    android:layout_margin="4dp"
+                    android:backgroundTint="@color/g5">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:text="@string/location_most_active_hour"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/white"/>
+                        <TextView
+                            android:text="@string/most_active_hour"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/white"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/loudest_frog_card"
+                    card_view:cardCornerRadius="12dp"
+                    card_view:cardElevation="4dp"
+                    android:layout_margin="4dp"
+                    android:backgroundTint="@color/g4"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:text="@string/location_loudest_frog"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/white" />
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="8dp"
+                                android:src="@drawable/baseline_play_arrow_24"
+                                android:contentDescription="@string/play_icon_desc" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/loudest_frog_name"
+                            android:text="@string/zelena_rega"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/white"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <include
+                    layout="@layout/sound_overlay"
+                    android:id="@+id/sound_overlay"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <include
+                android:id="@+id/donutViewContainer"
+                layout="@layout/donut_view" />
+            <include
+                android:id="@+id/donutViewContainer_1"
+                layout="@layout/donut_template" />
         </LinearLayout>
-
-
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
     <include layout="@layout/bottom_menu"/>
 </RelativeLayout>

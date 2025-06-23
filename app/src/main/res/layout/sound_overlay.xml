@@ -19,7 +19,6 @@
     android:outlineSpotShadowColor="@color/transparent"
     android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
-    <!-- Frog name -->
     <TextView
     android:id="@+id/frog_name"
     android:layout_width="wrap_content"
@@ -32,7 +31,6 @@
     android:layout_marginTop="16dp"
     android:layout_toStartOf="@id/btn_close" />
 
-    <!-- Sound waveform image -->
     <VideoView
     android:id="@+id/video_waveform"
     android:layout_width="match_parent"
@@ -42,7 +40,6 @@
     android:layout_centerInParent="true"
     android:background="@android:color/transparent" />
 
-    <!-- Audio progress -->
     <TextView
     android:id="@+id/timer"
     android:layout_width="wrap_content"
@@ -63,7 +60,6 @@
     android:layout_below="@id/video_waveform"
     android:layout_marginTop="8dp" />
 
-    <!-- Playback controls -->
     <LinearLayout
     android:id="@+id/play_controls"
     android:layout_width="wrap_content"
@@ -73,7 +69,6 @@
     android:layout_marginTop="15dp"
     android:orientation="horizontal">
 
-    <!-- Previous / unused -->
     <ImageButton
     android:id="@+id/btn_prev"
     android:layout_width="48dp"
@@ -82,7 +77,6 @@
     android:background="@android:color/transparent"
     app:tint="#FFFFFF" />
 
-    <!-- Play / Pause -->
     <ImageButton
     android:id="@+id/btn_play"
     android:layout_width="72dp"
@@ -92,7 +86,6 @@
     android:layout_marginHorizontal="12dp"
     app:tint="#FFFFFF" />
 
-    <!-- Next / unused -->
     <ImageButton
     android:id="@+id/btn_next"
     android:layout_width="48dp"

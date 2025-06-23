@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -48,7 +48,7 @@
 
             <!-- Date and Overview -->
             <TextView
-                android:id="@+id/dateText"
+                android:id="@+id/dateText_Main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -136,7 +136,6 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp">
 
-                <!-- First Row -->
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -156,7 +155,6 @@
                         android:layout_margin="8dp" />
                 </TableRow>
 
-                <!-- Second Row -->
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -197,7 +195,6 @@
                 android:stretchColumns="0,1"
                 android:padding="16dp">
 
-                <!-- First Row -->
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -217,7 +214,6 @@
                         android:layout_margin="8dp" />
                 </TableRow>
 
-                <!-- Second Row -->
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -255,7 +251,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:scrollbars="none">
+                android:scrollbars="none"
+                android:fadeScrollbars="false">
 
                 <LinearLayout
                     android:id="@+id/articlesCardsContainer"
